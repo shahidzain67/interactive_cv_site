@@ -5,8 +5,6 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-  </head>
-  <body>
     <style> 
       
       @font-face {
@@ -65,27 +63,32 @@
 
       .split {
         height: 100%;
-        width: 20%;
         position: fixed;
         z-index: 1;
         top: 0;
         overflow-x: hidden;
+        transition: left 0.5s ease; /* Add transition for left property */
       }
 
       .split_game {
         height: 100%;
-        width: 80%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
+        width: 100%;
+        right: 0; /* Position the right split from the right side */
         overflow-x: hidden;
+        z-index: 2; /* Ensure the right side is above the left side */
       }
 
       /* Control the left side */
       .left {
-        left: 0;
+        left: -15%;
         background-color: #ffffff;
         user-select: none;
+        width: 20%;
+      }
+
+      /* Hide the left side */
+      .left.hidden {
+        left: 0; /* Push the left side out of view */
       }
 
       /* Control the right side */
@@ -110,7 +113,9 @@
       }
 
     </style>
-    <div class="split left">
+  </head>
+  <body>
+    <div class="split left" id="leftSplit">
       <div class="centered">
         <img src="./profilepic.jpg" alt="Zain Shahid">
         <h2> Zain Shahid</h2>
@@ -136,7 +141,14 @@
       </div>
     </div>
 
-    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const leftSplit = document.getElementById('leftSplit');
+        leftSplit.addEventListener('click', function() {
+          leftSplit.classList.toggle('hidden');
+        });
+      });
+    </script>
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
