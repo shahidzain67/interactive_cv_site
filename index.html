@@ -8,6 +8,7 @@
   </head>
   <body>
     <style> 
+      
       @font-face {
         font-family: monogram;
         src: url(monogram.ttf);
@@ -62,31 +63,77 @@
         margin-top: 1rem;
       }
 
-      .note {
+      .split {
+        height: 100%;
+        width: 20%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+      }
+
+      .split_game {
+        height: 100%;
+        width: 80%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        overflow-x: hidden;
+      }
+
+      /* Control the left side */
+      .left {
+        left: 0;
+        background-color: #ffffff;
+      }
+
+      /* Control the right side */
+      .right {
+        right: 0;
+      }
+
+      /* If you want the content centered horizontally and vertically */
+      .centered {
         position: absolute;
-        left: 5%;
-        top: 1vh;
-        display: flex;
-        flex-direction: column;
-        color: rgb(238, 238, 238);
-        user-select: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+
+      /* Style the image inside the centered container, if needed */
+      .centered img {
+        width: 150px;
+        border-radius: 50%;
       }
 
     </style>
-    <div id="app">
-      <div id="ui">
-        <div class="note">Tap/Click around to move</div>
-        <div id="textbox-container" style="display:none">
-          <div id="textbox">
-            <p id="dialogue" class="ui-text"></p>
-            <div class="btn-container">
-              <button id="close" class="ui-close-btn">Close</button>
-            </div>
-          </div>
-        </div>
+    <div class="split left">
+      <div class="centered">
+        <img src="./profilepic.jpg" alt="Zain Shahid">
+        <h2> Zain Shahid</h2>
+        <p>Welcome to my Portfolio Website</p>
+        <p> Click/Tap around to move</p>
       </div>
-        <canvas id="game"></canvas>
     </div>
+
+    <div class="split_game right">
+        <div id="app">
+              <div id="ui">
+                <div id="textbox-container" style="display:none">
+                  <div id="textbox">
+                    <p id="dialogue" class="ui-text"></p>
+                    <div class="btn-container">
+                      <button id="close" class="ui-close-btn">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <canvas id="game"></canvas>       
+      </div>
+    </div>
+
+    
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
