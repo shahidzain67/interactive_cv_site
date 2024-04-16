@@ -61,42 +61,6 @@
         margin-top: 1rem;
       }
 
-      .split {
-        height: 100%;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        overflow-x: hidden;
-        transition: left 0.5s ease; /* Add transition for left property */
-      }
-
-      .split_game {
-        height: 100%;
-        width: 100%;
-        right: 0; /* Position the right split from the right side */
-        overflow-x: hidden;
-        z-index: 2; /* Ensure the right side is above the left side */
-      }
-
-      /* Control the left side */
-      .left {
-        left: -15%;
-        background-color: #ffffff;
-        user-select: none;
-        width: 20%;
-      }
-
-      /* Hide the left side */
-      .left.hidden {
-        left: 0; /* Push the left side out of view */
-      }
-
-      /* Control the right side */
-      .right {
-        right: 0;
-        user-select: none;
-      }
-
       /* content centered horizontally and vertically */
       .centered {
         position: absolute;
@@ -115,17 +79,6 @@
     </style>
   </head>
   <body>
-    <div class="split left" id="leftSplit">
-      <div class="centered">
-        <img src="./profilepic.jpg" alt="Zain Shahid">
-        <h2> Zain Shahid</h2>
-        <p>Welcome to my Portfolio Website</p>
-        <p> Click/Tap around to move</p>
-        <a href="https://www.linkedin.com/in/z-shahid/"> Chat with me</a>
-      </div>
-    </div>
-
-    <div class="split_game right">
         <div id="app">
               <div id="ui">
                 <div id="textbox-container" style="display:none">
@@ -139,16 +92,7 @@
               </div>
           <canvas id="game"></canvas>       
       </div>
-    </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const leftSplit = document.getElementById('leftSplit');
-        leftSplit.addEventListener('click', function() {
-          leftSplit.classList.toggle('hidden');
-        });
-      });
-    </script>
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
