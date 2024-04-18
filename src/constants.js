@@ -13,7 +13,7 @@ export const dialogueData = {
     Contact me at shahidzain67@gmail.com or at <a href="https://www.linkedin.com/in/z-shahid/" target="_blank">LinkedIn</a> if you have any interesting job opportunities!`,
     projects: `I've always got a side project underway. Check out a <a href="https://github.com/shahidzain67/Poetry-book" target="_blank">poetry book I designed</a>!
     Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
-    Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas.`,
+    Text is rendered with HTML/CSS.`,
     library: `There are a lot of programming books on my shelves. There is even one in Spanish (I also speak Spanish and Urdu btw).
     I probably only read one of them. Who else compulsively buys technical books without ever finishing them?`,
     fridge: `This is usually bursting with food... there are two very avid cooks who live in this house`,
