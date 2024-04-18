@@ -101,6 +101,12 @@ body {
     margin-bottom: 20%;
 }
 
+.heading img {
+    width: 50%; 
+    height: auto; 
+    justify-content: center; 
+}
+
 /* Title Screen Buttons */
 #title-screen .options {
     display: flex;
@@ -118,7 +124,7 @@ body {
     outline-color: #853605;
     font-size: inherit;
     border-color: #f0943b;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     text-align: center;
     margin: 0 15px;
 }
