@@ -3,6 +3,7 @@ export function displayDialogue(text, onDisplayEnd) {
     const dialogue = document.getElementById("dialogue");
 
     dialogueUI.style.display = 'block';
+    console.log("dialogue displayed");
 
     let index = 0;
     let currentText = "";
@@ -15,20 +16,27 @@ export function displayDialogue(text, onDisplayEnd) {
         }
 
         clearInterval(intervalRef);
-    }, 5);
+        
+        // Add a pause before allowing the dialogue box to be closed
+        setTimeout(() => {
+            document.addEventListener("click", closeDialogue);
+        }, 1000); // Adjust the delay as needed (1000ms = 1 second)
+    }, 2);
 
-    const closeBtn = document.getElementById("close");
-
-    function onCloseBtnClick() {
+    // Function to handle closing the dialogue box
+    function closeDialogue() {
         onDisplayEnd();
         dialogueUI.style.display = "none";
         dialogue.innerHTML = "";
         clearInterval(intervalRef);
-        closeBtn.removeEventListener("click", onCloseBtnClick);
+        document.removeEventListener("click", closeDialogue); // Remove the event listener
     }
-
-    closeBtn.addEventListener("click", onCloseBtnClick);
 }
+
+
+
+
+
 
 export function setCamScale(k) {
     const resizeFactor = k.width() / k.height();
