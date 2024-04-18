@@ -2,30 +2,27 @@
 @font-face {
     font-family: monogram;
     src: url(monogram.ttf);
-  }
+}
   
-  @font-face {
+@font-face {
     font-family: stardew_all_caps;
     src: url(Stardew_Valley_ALL_CAPS.ttf);
-  }
+}
+
+@font-face {
+    font-family: stardew_regular;
+    src: url(Stardew_Valley.ttf);
+}
   
-  /* General Styles */
-  body {
+/* General Styles */
+body {
     font-family: monogram, monospace;
     font-size: 2rem;
     overflow: hidden;
-  }
+}
   
-  /* Layout */
-  #app {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background-image: url(./stardew_valley_background.jpeg);
-  }
-  
-  /* Textbox */
-  #textbox {
+/* Textbox */
+#textbox {
     position: absolute;
     left: 10%;
     right: 10%;
@@ -43,32 +40,30 @@
     align-items: flex-start;
     word-spacing: 0.2rem;
     filter: drop-shadow(0 0 0.75rem #5b2b2a);
-  }
+}
   
-  /* Game Container */
-  #game-container {
+/* Game Container */
+#game-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     display: none; /* Initially hide the game container */
-  }
+}
   
-  #game {
-    width: 100%;
-    height: 100%;
+#game {
     display: block;
     outline: none;
-  }
+}
   
-  /* UI Text */
-  .ui-text {
+/* UI Text */
+.ui-text {
     margin: 0;
     user-select: none;
-  }
+}
   
-  .ui-close-btn {
+.ui-close-btn {
     color:#5b2b2a;
     font-family: inherit;
     background: #853605;
@@ -78,85 +73,57 @@
     border-color: #f0943b; 
     padding: 0.5rem 1rem;
     text-align: center;
-  }
+}
   
-  .btn-container {
+.btn-container {
     align-self: flex-end;
-  }
-  
-  /* Centered Content */
-  .centered {
+}
+
+/* Title Screen */
+#title-screen {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    user-select: none;
-  }
-  
-  .centered img {
-    width: 150px;
-    border-radius: 50%;
-  }
-  
-  /* Title */
-  h1 {
-    font-family: stardew_all_caps;
-    font-size: 10rem;
-    overflow: hidden;
-  }
-  
-  /* Title Screen Buttons */
-  #title-screen button {
-    background-color: rgba(209, 248, 255, 0.67);
-    border: 1px solid #8DCAF0;
-    border-radius: 11px;
-    padding: 10px 20px;
-    font-size: 2rem;
-    margin: 10px;
-    cursor: pointer;
-  }
-  
-  #title-screen button:hover {
-    background-color: #8DCAF0;
-    color: white;
-  }
-  
-  #title-screen {
-    background-image: url(./stardew_valley_background.jpeg);
-  }
-  
-  /* Title Screen Button Options */
-  .options {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    width: 100%;
+    height: 100%;
+    background-image: url(./stardew_valley_background.jpeg);
+}
+
+/* Title */
+.heading {
+    position: absolute;
+    text-align: center;
+    user-select: none;
+    font-family: stardew_all_caps;
+    color: #e67943;
+    font-size: 10rem;
+    margin-bottom: 20%;
+}
+
+/* Title Screen Buttons */
+#title-screen .options {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 30%;
+}
   
-  .options button {
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 18rem;
-    height: 5rem ;
-    border: none; 
-    padding: 0; 
-    cursor: pointer; 
-  }
+#title-screen .options button {
+    cursor: pointer;
+    color: #d57052;
+    font-family: stardew_regular;
+    background: #fdd687;
+    outline-style: solid;
+    outline-color: #853605;
+    font-size: inherit;
+    border-color: #f0943b;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    margin: 0 15px;
+}
   
-  /* Individual Button Styles */
-  #start-game {
-    background-image: url(./start-game.png);
-  } 
-  
-  #Github {
-    background-image: url(./github.png);
-  }
-  
-  #LinkedIn {
-    background-image: url(./linkedin.png);
-  }
-  
-  #CV {
-    background-image: url(./cv.png);
-  }
-  
+#title-screen .options button:hover {
+    color: white;
+    cursor: pointer;
+}

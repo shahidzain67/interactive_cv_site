@@ -5,6 +5,8 @@ import { displayDialogue, setCamScale } from "./utils";
 
 // Define a function to initialize the game scene
 function initGame() {
+
+    console.log("game start")
     // Hide the title screen
     document.getElementById("title-screen").style.display = "none";
     
