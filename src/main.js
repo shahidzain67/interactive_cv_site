@@ -72,8 +72,13 @@ function initGame() {
 
                     if (boundary.name) {
                         player.onCollide(boundary.name, () => {
-                            player.isInDialogue = true;
-                            displayDialogue(dialogueData[boundary.name], () => (player.isInDialogue = false));
+                            if (boundary.name === "exit") {
+                                // Refresh the page when colliding with an "exit" boundary
+                                window.location.reload();
+                            } else {
+                                player.isInDialogue = true;
+                                displayDialogue(dialogueData[boundary.name], () => (player.isInDialogue = false));
+                            }
                         })
                     }
                 }
