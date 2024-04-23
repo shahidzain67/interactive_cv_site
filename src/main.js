@@ -6,18 +6,21 @@ import { displayDialogue, setCamScale } from "./utils";
 // Define a function to initialize the game scene
 function initGame() {
 
-    console.log("game start")
     // Hide the title screen
     document.getElementById("title-screen").style.display = "none";
     
     // Show the game container
-    document.getElementById("game-container").style.display = "block";
+    const gameContainer = document.getElementById("game-container");
+    gameContainer.style.display = "block";
+
+    // Set focus to the game container to ensure keyboard input is captured
+    gameContainer.focus();
 
     k.loadSprite("spritesheet", "./spritesheet.png", {
         sliceX: 39,
         sliceY: 31, // every frame is 16x16, so can be calculated by dividing image size by 16
         anims: {
-            "idle-down": 944, //frame id from tiled
+            "idle-down": 944,
             "walk-down": { from: 944, to: 947, loop: true, speed: 8 },
             "idle-side": 983,
             "walk-side": { from: 983, to: 986, loop: true, speed: 8 },
