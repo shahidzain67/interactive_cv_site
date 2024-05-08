@@ -8,7 +8,7 @@ function initGame() {
 
     // Hide the title screen
     document.getElementById("title-screen").style.display = "none";
-    
+
     // Show the game container
     const gameContainer = document.getElementById("game-container");
     gameContainer.style.display = "block";
@@ -25,23 +25,62 @@ function initGame() {
             "idle-side": 983,
             "walk-side": { from: 983, to: 986, loop: true, speed: 8 },
             "idle-up": 1022,
-            "walk-up": { from: 1022, to: 1025, loop: true, speed: 8 }, 
+            "walk-up": { from: 1022, to: 1025, loop: true, speed: 8 },
         },
-    }); 
-    
+    });
+
+    // Load map and animated sprites
     k.loadSprite("map", "./map.png");
-    
-    k.setBackground(k.Color.fromHex("#311047"));    
+    k.loadSprite("exclamation", "./exclamation.png");
+
+    // Set background colour
+    k.setBackground(k.Color.fromHex("#311047"));
 
     k.scene("main", async () => {
-        const mapData = await (await fetch("./map.json")).json() //load map data before doing anything else and load as JSON
+        const mapData = await (await fetch("./map.json")).json()
         const layers = mapData.layers;
 
+        // Add map
         const map = k.add([
             k.sprite("map"),
             k.pos(0),
             k.scale(scaleFactor)
         ]);
+
+        // Define exclamation data with sprite name and position
+        const exclamationData = [
+            { spriteName: "pc", position: k.vec2(770, 285) },
+            { spriteName: "mechatronics", position: k.vec2(386, 190) },
+            { spriteName: "phd", position: k.vec2(515, 190) },
+            { spriteName: "tv", position: k.vec2(1090, 540) },
+            { spriteName: "bed", position: k.vec2(1250, 230) },
+            { spriteName: "resume", position: k.vec2(462, 375) },
+            { spriteName: "projects", position: k.vec2(510, 375) },
+            { spriteName: "library", position: k.vec2(962, 190) },
+            { spriteName: "fridge", position: k.vec2(642, 190) },
+        ];
+
+        // Array to hold references to all exclamation points
+        const exclamationPoints = [];
+
+        // Create exclamation points dynamically based on data
+        exclamationData.forEach(data => {
+            const exclamation = k.add([
+                k.sprite("exclamation"),
+                k.pos(data.position),
+                k.scale(4),
+                { spriteName: data.spriteName } // Attach spriteName as a custom component
+            ]);
+            exclamationPoints.push(exclamation); // Store the exclamation point in the array
+        });
+
+        // Animation loop to animate all exclamation points
+        k.loop(0.1, () => {
+            exclamationPoints.forEach(exclamation => {
+                const yOffset = Math.sin(k.time() * 10) * 1.2; 
+                exclamation.pos.y += yOffset;
+            });
+        });
 
         const player = k.make([
             k.sprite("spritesheet", { anim: "idle-down" }),
@@ -81,6 +120,12 @@ function initGame() {
                             } else {
                                 player.isInDialogue = true;
                                 displayDialogue(dialogueData[boundary.name], () => (player.isInDialogue = false));
+                                const exclamationToDestroy = exclamationPoints.find(exclamation => exclamation.spriteName === boundary.name);
+                                    if (exclamationToDestroy) {
+                                        console.log("destroyed ", exclamationToDestroy.spriteName)
+                                        exclamationToDestroy.destroy();
+                        }
+                                
                             }
                         })
                     }
@@ -128,7 +173,7 @@ function initGame() {
                 player.curAnim() !== "walk-up"
             ) {
                 player.play("walk-up");
-                player.direction ="up";
+                player.direction = "up";
                 return;
             }
 
@@ -138,7 +183,7 @@ function initGame() {
                 player.curAnim() !== "walk-down"
             ) {
                 player.play("walk-down");
-                player.direction ="down";
+                player.direction = "down";
                 return;
             }
 

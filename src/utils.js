@@ -3,7 +3,6 @@ export function displayDialogue(text, onDisplayEnd) {
     const dialogue = document.getElementById("dialogue");
 
     dialogueUI.style.display = 'block';
-    console.log("dialogue displayed");
 
     let index = 0;
     let currentText = "";
