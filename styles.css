@@ -17,7 +17,7 @@
 /* General Styles */
 body {
     font-family: monogram, monospace;
-    font-size: 6vw;
+    font-size: 2vw;
     overflow: hidden;
 }
 
@@ -109,8 +109,7 @@ a {
 }
 
 .heading img {
-    max-width: 50%;
-    /* width: 50%;  */
+    width: 55vw; 
     height: auto; 
     justify-content: center; 
 }
@@ -130,10 +129,10 @@ a {
     background: #fdd687;
     outline-style: solid;
     outline-color: #853605;
-    font-size: inherit;
+    font-size: 4vw;
     border-color: #f0943b;
     text-align: center;
-    margin: 10% 15px;
+    margin: 10% 2vw;
 }
 
 #title-screen .options button:hover {
