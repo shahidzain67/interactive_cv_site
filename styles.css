@@ -22,10 +22,10 @@ body {
 }
 
 /* Hyperlinks */
-a {
+#title-screen a {
     color: inherit; 
     text-decoration: inherit; 
-  }
+}
 
 /* Textbox */
 #textbox {
