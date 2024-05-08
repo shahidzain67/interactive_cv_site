@@ -20,14 +20,21 @@ body {
     font-size: 2rem;
     overflow: hidden;
 }
-  
+
+/* Hyperlinks */
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+  }
+
 /* Textbox */
 #textbox {
     position: absolute;
     left: 10%;
     right: 10%;
     bottom: 2vh;
-    min-height: 10vh;
+    min-height: 20%;
+    max-height: 50%;
     background: rgba(247,187,106,255);
     border-radius: 3px;
     outline-style: solid;
@@ -102,14 +109,15 @@ body {
 }
 
 .heading img {
-    width: 50%; 
+    max-width: 50%;
+    /* width: 50%;  */
     height: auto; 
     justify-content: center; 
 }
 
 /* Title Screen Buttons */
 #title-screen .options {
-    display: flex;
+    display: block;
     justify-content: center; 
     align-items: center;
     margin-top: 30%;
@@ -124,10 +132,14 @@ body {
     outline-color: #853605;
     font-size: inherit;
     border-color: #f0943b;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 5%;
     text-align: center;
-    margin: 0 15px;
+    /* margin: 10% 15px; */
 }
+
+#title-screen .options button:hover {
+    transform: scale(1.2);
+  }
   
 #title-screen .options button:hover {
     color: white;
