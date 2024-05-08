@@ -1,17 +1,17 @@
 /* Fonts */
 @font-face {
     font-family: monogram;
-    src: url(monogram.ttf);
+    src: url(public/monogram.ttf);
 }
   
 @font-face {
     font-family: stardew_all_caps;
-    src: url(Stardew_Valley_ALL_CAPS.ttf);
+    src: url(public/Stardew_Valley_ALL_CAPS.ttf);
 }
 
 @font-face {
     font-family: stardew_regular;
-    src: url(Stardew_Valley.ttf);
+    src: url(public/Stardew_Valley.ttf);
 }
   
 /* General Styles */
@@ -87,7 +87,7 @@ body {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-image: url(./stardew_valley_background.jpeg);
+    background-image: url(public/stardew_valley_background.jpeg);
 }
 
 /* Title */
