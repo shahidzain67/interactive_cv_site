@@ -19,8 +19,8 @@ export function displayDialogue(text, onDisplayEnd) {
         // Add a pause before allowing the dialogue box to be closed
         setTimeout(() => {
             document.addEventListener("click", closeDialogue);
-        }, 1000); // Adjust the delay as needed (1000ms = 1 second)
-    }, 2);
+        }, 100); // Adjust the delay as needed (1000ms = 1 second)
+    }, 15);
 
     // Function to handle closing the dialogue box
     function closeDialogue() {
@@ -31,11 +31,6 @@ export function displayDialogue(text, onDisplayEnd) {
         document.removeEventListener("click", closeDialogue); // Remove the event listener
     }
 }
-
-
-
-
-
 
 export function setCamScale(k) {
     const resizeFactor = k.width() / k.height();
