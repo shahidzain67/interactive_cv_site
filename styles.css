@@ -17,7 +17,7 @@
 /* General Styles */
 body {
     font-family: monogram, monospace;
-    font-size: 2rem;
+    font-size: 6vw;
     overflow: hidden;
 }
 
@@ -117,8 +117,8 @@ a {
 
 /* Title Screen Buttons */
 #title-screen .options {
-    display: block;
-    justify-content: center; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     margin-top: 30%;
 }
@@ -132,9 +132,8 @@ a {
     outline-color: #853605;
     font-size: inherit;
     border-color: #f0943b;
-    padding: 0.5rem 5%;
     text-align: center;
-    /* margin: 10% 15px; */
+    margin: 10% 15px;
 }
 
 #title-screen .options button:hover {
