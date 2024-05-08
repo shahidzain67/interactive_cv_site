@@ -58,6 +58,7 @@ function initGame() {
             { spriteName: "projects", position: k.vec2(510, 375) },
             { spriteName: "library", position: k.vec2(962, 190) },
             { spriteName: "fridge", position: k.vec2(642, 190) },
+            { spriteName: "sofa-table", position: k.vec2(1060, 380) },
         ];
 
         // Array to hold references to all exclamation points
