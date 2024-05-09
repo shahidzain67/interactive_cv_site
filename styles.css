@@ -21,11 +21,11 @@ body {
     overflow: hidden;
 }
 
-/* Hyperlinks */
+/* Hyperlinks
 #title-screen a {
     color: inherit; 
     text-decoration: inherit; 
-}
+} */
 
 /* Textbox */
 #textbox {
@@ -56,7 +56,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    display: none; /* Initially hide the game container */
 }
   
 #game {
@@ -87,7 +86,7 @@ body {
 }
 
 /* Title Screen */
-#title-screen {
+/* #title-screen {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -95,10 +94,10 @@ body {
     width: 100%;
     height: 100%;
     background-image: url(public/stardew_valley_background.jpeg);
-}
+} */
 
 /* Title */
-.heading {
+/* .heading {
     position: absolute;
     text-align: center;
     user-select: none;
@@ -106,23 +105,23 @@ body {
     color: #e67943;
     font-size: 10rem;
     margin-bottom: 20%;
-}
+} */
 
-.heading img {
+/* .heading img {
     width: 55vw; 
     height: auto; 
     justify-content: center; 
-}
+} */
 
 /* Title Screen Buttons */
-#title-screen .options {
+/* #title-screen .options {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 30%;
-}
+} */
   
-#title-screen .options button {
+/* #title-screen .options button {
     cursor: pointer;
     color: #d57052;
     font-family: stardew_regular;
@@ -133,13 +132,13 @@ body {
     border-color: #f0943b;
     text-align: center;
     margin: 10% 2vw;
-}
+} */
 
-#title-screen .options button:hover {
+/* #title-screen .options button:hover {
     transform: scale(1.2);
   }
   
 #title-screen .options button:hover {
     color: white;
     cursor: pointer;
-}
+} */
