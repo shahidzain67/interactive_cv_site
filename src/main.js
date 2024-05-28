@@ -3,22 +3,14 @@ import { dialogueData } from "./constants";
 import { k } from "./kaboomCtx";
 import { displayDialogue, setCamScale } from "./utils";
 
-// Define a function to initialize the game scene
-function initGame() {
+const canvas_height = k.height();
+const canvas_width = k.width();
 
-    // Hide the title screen
-    document.getElementById("title-screen").style.display = "none";
-
-    // Show the game container
-    const gameContainer = document.getElementById("game-container");
-    gameContainer.style.display = "block";
-
-    // Set focus to the game container to ensure keyboard input is captured
-    gameContainer.focus();
-
+// Function to initialize Kaboom and game environment
+function initKaboom() {
     k.loadSprite("spritesheet", "./spritesheet.png", {
         sliceX: 39,
-        sliceY: 31, // every frame is 16x16, so can be calculated by dividing image size by 16
+        sliceY: 31,
         anims: {
             "idle-down": 944,
             "walk-down": { from: 944, to: 947, loop: true, speed: 8 },
@@ -29,15 +21,78 @@ function initGame() {
         },
     });
 
-    // Load map and animated sprites
+    k.loadSprite("titleBackground", "./stardew_valley_background.jpeg");
+    k.loadSprite("menu-title", "./title.png");
+    k.loadSprite("start-game-button", "./start-game.png");
+    k.loadSprite("github-button", "./github.png");
+    k.loadSprite("linkedin-button", "./linkedin.png");
+    k.loadSprite("cv-button", "./cv.png");
     k.loadSprite("map", "./map.png");
     k.loadSprite("exclamation", "./exclamation.png");
 
-    // Set background colour
-    k.setBackground(k.Color.fromHex("#311047"));
+    function addButton(spriteName, p, f) {
 
+        // add a parent background object
+        const btn = k.add([
+            k.sprite(spriteName),
+            k.pos(p),
+            k.area(),
+            k.scale(2)
+        ])
+
+        // Add hover effects to the button
+        btn.onHoverUpdate(() => {
+            const t = k.time() * 10;
+            btn.scale = k.vec2(2.2);
+            k.setCursor("pointer"); 
+        });
+
+        btn.onHoverEnd(() => {
+            btn.scale = k.vec2(2); 
+        });
+
+        btn.onClick(f)
+
+        return btn
+    }
+
+    // Define title-screen scene
+    k.scene("title-screen", () => {
+        k.add([k.rect(k.width(), k.height(), { color: k.color(0, 0, 0) })]);
+
+        // Load the background image
+        const background = k.add([
+            k.sprite("titleBackground"),
+        ]);
+
+        // Home Screen Buttons
+        addButton("start-game-button", k.vec2((canvas_width / 2)-200, canvas_height / 2), () => k.go("main")); 
+        addButton("github-button", k.vec2((canvas_width / 2)-200, (canvas_height / 2)+100), () => k.go("github"));
+        addButton("linkedin-button", k.vec2((canvas_width / 2)-200, (canvas_height / 2)+200), () => k.go("linkedin"));
+        addButton("cv-button", k.vec2((canvas_width / 2)-200, (canvas_height / 2)+300), () => k.go("cv")); 
+
+    });
+
+    // External Links
+    k.scene("github", () => {
+        window.open("https://github.com/shahidzain67", "_blank");
+        k.go("title-screen");
+    });
+
+    k.scene("linkedin", () => {
+        window.open("https://www.linkedin.com/in/z-shahid/", "_blank");
+        k.go("title-screen");
+    });
+
+    k.scene("cv", () => {
+        window.open("./resume.pdf", "_blank");
+        k.go("title-screen");
+    });
+
+    // Main game scene
     k.scene("main", async () => {
         const mapData = await (await fetch("./map.json")).json()
+        k.add([k.rect(k.width(), k.height(), { color: k.color(255, 255, 255) })]);
         const layers = mapData.layers;
 
         // Add map
@@ -217,14 +272,11 @@ function initGame() {
             player.play("idle-side");
         })
     });
-
-    k.go("main");
+    
 }
 
-// Event listener for the "Start Game" button
-function startGame() {
-    document.getElementById("start-game").removeEventListener("click", startGame);
-    initGame();
-}
+// Call the Kaboom initialization function to start the game
+initKaboom();
 
-document.getElementById("start-game").addEventListener("click", startGame);
+// Set initial scene to title-screen
+k.go("title-screen");
